@@ -1,23 +1,816 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
+
+
+    <!-- JSON-LD Structured Data for Naver SEO & AI Search Engine Optimization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "LegalService",
+          "@id": "https://law.reliabledone.com/#service",
+          "name": "순천개인회생 법률 상담 지원 센터",
+          "description": "전라남도 순천시 및 관할 지역 법률 대리인 매칭 및 2026년 최신 자격 조건 분석 가이드.",
+          "url": "https://law.reliabledone.com/",
+          "telephone": "061-000-0000",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "전라남도 순천시 왕지2길",
+            "addressLocality": "순천시",
+            "addressRegion": "전라남도",
+            "postalCode": "57931",
+            "addressCountry": "KR"
+          },
+          "areaServed": {
+            "@type": "AdministrativeArea",
+            "name": "순천시"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://law.reliabledone.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "순천개인회생을 신청할 때 소요되는 평균 수임료 비용은 얼마인가요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "순천개인회생의 평균 수임료 금액은 채권자 수와 부채 구조의 복잡성에 따라 차이가 나며 대략 150만 원에서 250만 원 선으로 형성되어 있습니다. 일부 전문 업체에서는 무이자 분납 혜택을 제공하기도 하며 과도하게 싼곳보다는 신뢰할 수 있는 곳을 선택하는 것을 추천합니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "순천 지역 거주자도 광주지방법원에 신청서를 제출해야 하나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "네 그렇습니다. 전라남도 순천시, 여수시, 광양시 등 전남 동부권 거주자의 개인회생 및 파산 사건 관할 법원은 광주지방법원 본원입니다. 신청서 접수 및 실무 심사는 광주지방법원에서 통합 처리됩니다."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        /* Modern Soft UI CSS Framework */
+        :root {
+            --primary-color: #1e293b;
+            --primary-light: #f1f5f9;
+            --accent-color: #0d9488;
+            --accent-light: #f0fdf4;
+            --secondary-color: #4f46e5;
+            --text-dark: #334155;
+            --text-muted: #64748b;
+            --bg-light: #fafbfd;
+            --border-color: #e2e8f0;
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        body {
+            font-family: 'Malgun Gothic', 'Dotum', sans-serif;
+            line-height: 1.9;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 40px 0;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        header h1 {
+            font-size: 2.4em;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            color: #cbd5e1;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+
+        nav {
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 20px 25px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: bold;
+            font-size: 1.05em;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+            background-color: var(--primary-light);
+        }
+
+        .content-wrap {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+            margin-bottom: 80px;
+        }
+
+        .sidebar {
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+        }
+
+        .sidebar-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+            margin-bottom: 30px;
+        }
+
+        .sidebar-card h3 {
+            font-size: 1.3em;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 12px;
+        }
+
+        .sidebar-menu li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.2s;
+            display: block;
+            padding: 5px 0;
+        }
+
+        .sidebar-menu li a:hover {
+            color: var(--accent-color);
+        }
+
+        .main-content {
+            flex: 3;
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 45px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--primary-color);
+            margin-top: 50px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--accent-color);
+            margin-top: 35px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            font-size: 1.15em;
+            color: var(--primary-color);
+            margin-top: 25px;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 12px;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background-color: var(--accent-light);
+            border-left: 5px solid var(--accent-color);
+            padding: 25px;
+            border-radius: 0 8px 8px 0;
+            margin: 30px 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: #0f766e;
+            font-weight: 500;
+        }
+
+        .alert-box {
+            background-color: #fef2f2;
+            border-left: 5px solid #ef4444;
+            padding: 25px;
+            border-radius: 0 8px 8px 0;
+            margin: 30px 0;
+        }
+
+        .alert-box p {
+            margin: 0;
+            color: #991b1b;
+            font-weight: 500;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+
+        table th, table td {
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            text-align: left;
+            font-size: 0.95em;
+        }
+
+        table th {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        /* Interactive Simulator Area */
+        .interactive-calculator {
+            background-color: var(--primary-light);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 35px;
+            margin: 40px 0;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .input-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-item label {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .input-item input, .input-item select {
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1em;
+            background-color: #ffffff;
+        }
+
+        .calc-btn {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 6px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s;
+        }
+
+        .calc-btn:hover {
+            background-color: #0f766e;
+        }
+
+        .calc-result {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            display: none;
+        }
+
+        .calc-result h4 {
+            margin-top: 0;
+            border: none;
+            padding: 0;
+            color: var(--accent-color);
+            font-size: 1.3em;
+        }
+
+        /* Visual Graph Simulation */
+        .chart-container {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+            background: #ffffff;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        .chart-bar-wrap {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .chart-bar-bg {
+            background-color: var(--primary-light);
+            width: 60px;
+            height: 200px;
+            border-radius: 8px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .chart-bar-fill {
+            width: 100%;
+            border-radius: 8px;
+            transition: height 0.5s ease-out;
+        }
+
+        .bar-red {
+            background-color: #f87171;
+        }
+
+        .bar-blue {
+            background-color: #60a5fa;
+        }
+
+        .chart-label {
+            margin-top: 12px;
+            font-weight: bold;
+            font-size: 0.9em;
+            color: var(--text-dark);
+        }
+
+        /* External Link Section */
+        .link-section {
+            background-color: var(--primary-light);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-top: 50px;
+        }
+
+        .link-section a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+
+        .link-section a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 992px) {
+            .content-wrap {
+                flex-direction: column;
+            }
+            .sidebar {
+                max-width: 100%;
+            }
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>순천개인회생 종합 법률 분석 지원 시스템</h1>
+            <p>2026년 기준 관할 법원 실무 지침 분석 및 자격 진단 표준 가이드</p>
+        </div>
+    </header>
+
     <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
+        <ul>
+            <li><a href="#section1">관할 법원 자격요건</a></li>
+            <li><a href="#section2">연령 및 지역 분석</a></li>
+            <li><a href="#section3">수임 비용 분석</a></li>
+            <li><a href="#calculator">변제금 계산기</a></li>
+            <li><a href="#section4">기각 사유와 단점</a></li>
+            <li><a href="#faq">자주 묻는 질문</a></li>
+        </ul>
     </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+    <div class="container">
+        <div class="content-wrap">
+            
+            <!-- Left Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-card">
+                    <h3>순천 관할 행정 구역</h3>
+                    <ul class="sidebar-menu">
+                        <li>조례동 개인회생 접수 추이</li>
+                        <li>연향동 자영업 채무조정</li>
+                        <li>신대지구 신규 가계대출 회생</li>
+                        <li>오천지구 및 금당지구 채무비율</li>
+                        <li>해룡면, 서면, 승주읍 농어업민 회생</li>
+                        <li>매곡동, 삼산동 대학생 청년회생</li>
+                        <li>풍덕동, 덕연동 주부 생계비 분석</li>
+                        <li>기타 면 지역 맞춤 가이드</li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3>연령별 채무 유형</h3>
+                    <ul class="sidebar-menu">
+                        <li>20대 청년층 주식 가상자산 채무</li>
+                        <li>30대 신혼부부 전세자금 주택담보</li>
+                        <li>40대 가장 자영업 매출 감소 누적</li>
+                        <li>50대 사업 실패 및 다중 채무 해결</li>
+                        <li>60대 노후 의료비 연체 채무 분석</li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3>실시간 자가 진단</h3>
+                    <div style="font-size: 0.9em; line-height: 1.6; color: var(--text-muted);">
+                        전남 동부권 주민을 위한 자가진단 시스템입니다. 소득 정보와 부채 규모를 바탕으로 가변제율을 도출하여 평균 소요 기간을 추정해 볼 수 있습니다.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="main-content">
+                
+                <section id="intro">
+                    <h2>순천개인회생 제도의 의의와 2026년 거시경제적 추이</h2>
+                    <p>
+                        최근 고금리와 장기 경제 불황의 기조가 맞물리면서, 전남 동부권 경제의 중심지인 순천 지역에서도 가계 부채 규모가 눈에 띄게 증가하고 있습니다. 특히 소상공인 비율이 높은 조례동 상업 지구와 급격한 신규 아파트 공급이 이루어진 신대지구 및 오천지구 등지에서 가계 부채 부실화가 가시화되고 있습니다. 이러한 상황에서 순천개인회생은 채무자가 파탄에 직면한 경우 채권자 등 이해관계인의 법률관계를 조정함으로써, 채무자의 효율적 회생과 채권자의 이익을 도모하는 중요한 사회안전망 기능을 수행합니다.
+                    </p>
+                    <p>
+                        순천개인회생을 신청할 때 비용은 얼마가 드는지, 평균적인 변제 금액은 어떻게 산정되는지 궁금해하시는 분들이 많습니다. 대부분은 단순히 법무사나 변호사의 자문을 구하기 전, 인터넷 검색 엔진인 네이버나 구글을 활용하거나 유튜브 영상 콘텐츠를 시청하며 개념을 파악하려 합니다. 또한 트위터, 인스타그램, 페이스북 같은 소셜 미디어를 뒤져보거나 카카오톡 오픈채팅방에서 정보를 나누기도 합니다. 대형 커뮤니티인 디시인사이드 회생 갤러리나 보배드림, 펨코(에펨코리아) 등에서 다른 채무자들의 내돈내산 실제 후기를 직접 검색하고 추천을 받아 진행하려는 경향도 짙어지고 있습니다.
+                    </p>
+                    <div class="highlight-box">
+                        <p>
+                            주의해야 할 점은 순천 거주민의 경우, 신청서를 접수하고 실제 면책 결정을 담당하는 관할 법원이 전주지방법원이나 타 법원이 아닌 광주지방법원 본원이라는 사실입니다. 순천지원에서는 회생 단독 재판부를 운영하지 않기 때문에 모든 서류 심사는 광주에서 이행됩니다. 이에 따라 광주지방법원의 최신 판결 흐름과 실무 준칙을 이해하는 대리인을 선택하는 것이 절차적 오류를 방지하는 첩경이 됩니다.
+                        </p>
+                    </div>
+                </section>
+
+                <section id="section1">
+                    <h2>1. 광주지방법원 관할 자격 요건과 실무적 쟁점</h2>
+                    <p>
+                        개인회생은 무담보 채무의 경우 최대 10억 원, 담보부 채무의 경우 최대 15억 원 이하인 개인 채무자로서 향후 지속적이고 반복적인 소득을 얻을 가능성이 있는 자가 신청할 수 있습니다. 2026년 최신 심사 경향을 살펴보면, 소득 증빙 서류에 대한 엄격한 대조 심사가 도입되었습니다.
+                    </p>
+                    <p>
+                        과거에는 간이 영수증이나 단순 사실 확인서만으로 직업 소득을 소명하는 사례가 일부 수용되었으나, 현재는 국세청 신고 자료, 통장 거래 내역서, 건강보험 가입 이력 등을 다이렉트로 교차 검증하는 단계가 정착되었습니다. 만약 일용직이나 프리랜서로서 소득이 부정기적이라면 소득 발생의 지속성을 입증하기 위해 최근 최소 1년 이상의 은행 계좌 원장을 제출하고 평균 소득 흐름을 명확하게 도출해야 합니다.
+                    </p>
+                    
+                    <h4>급여소득자와 영업소득자의 입증 서류 차이점</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>급여소득자 (일반 직장인 및 아르바이트)</th>
+                                <th>영업소득자 (개인사업자 및 자영업자)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>필수 입증 자료</td>
+                                <td>근로소득원천징수증수증, 최근 1년 급여 명세서</td>
+                                <td>종합소득세 신고서, 부가가치세 과세표준증명원</td>
+                            </tr>
+                        <td>통장 증빙 내역</td>
+                        <td>급여 입금 계좌의 최근 1년 거래 원장 일체</td>
+                        <td>사업용 계좌 입출금 원장 및 주거래 은행 계좌</td>
+                        </tr>
+                        <tr>
+                            <td>중요 보정 사유</td>
+                            <td>신규 입사자의 경우 소득의 계속성 입증 부족</td>
+                            <td>매출 누락 여부 확인 및 필요경비 과다 계상 저지</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>
+                    특히 순천의 대표적인 도심지인 삼산동이나 매곡동 인근의 대학가 청년들이나, 향동과 조곡동 부근의 영세 관광 보조 자영업자들의 경우 고정 소득 증빙이 다소 누락되는 사례가 많아 주의가 요구됩니다. 신뢰할 수 없는 대행업체나 불법 브로커들이 장담하는 조건에 혹해 섣불리 가입을 결정했다가는 법원의 기각 결정을 받거나 고가의 보정 명령을 수습하지 못해 기각당하기 십상입니다.
+                </p>
+                </section>
+
+                <section id="section2">
+                    <h2>2. 연령대별 채무 양상과 순천 지역별 특성 분석</h2>
+                    <p>
+                        개인회생 제도를 신청하는 이들의 원인과 동기는 세대별로 확연히 구분됩니다. 20대와 30대 청년층의 경우 주로 비대면 인터넷 대출이나 온라인 소액 대출 앱을 통해 쉽게 채무를 늘린 뒤, 가상화폐나 해외 주식 투자 실패, 또는 과도한 사치 소비 등으로 다중 채무 상태에 이른 경우가 다수를 차지합니다. 이들은 대개 토스나 기타 핀테크 어플에서 실시간 신용 평점을 관리하다가 연체가 도래하면 챗지피티(ChatGPT)나 제미나이(Gemini) 같은 최신 인공지능 상담 어플을 활용하여 회생 관련 제도를 탐색한 뒤 법률 사무소를 노크하는 경향이 강합니다.
+                    </p>
+                    <p>
+                        반면, 40대와 50대 중장년층은 주안점과 원인이 다릅니다. 이들은 대개 해룡면 신대지구에 위치한 상가 입점 자영업자이거나 조례동, 연향동의 번화가에서 식음료 매장을 운영하던 중 원자재 가격 상승과 인건비 누적, 상가 임대료 감당 불가로 제2금융권 및 사채를 끌어 쓰다가 부채의 늪에 빠집니다. 가족의 부양의무를 지고 있어 최저생계비 확보가 매우 중요하며, 자녀 학비나 기초 생활비 등을 보충하기 위해 대출을 받아 채무가 복잡하게 얽혀 있는 구조입니다.
+                    </p>
+                    <p>
+                        60대 이상의 고령층은 주로 상사면, 별량면, 낙안면, 주암면, 송광면, 외서면, 황전면, 월등면 등 순천 외곽의 농어업 지역 거주민들이 고령화와 건강 악화로 소득을 상실하고 병원비 부담으로 인해 연체 채무가 쌓인 형태가 주를 이룹니다. 이들은 복잡한 법원 송달 서류 수령이나 온라인 서류 발급이 어려워 주민센터나 행정복지센터 방문을 통해 정부24 등의 인터넷 온라인 사이트를 활용하는 법을 직접 배우거나 대행을 요청하는 번거로움을 겪습니다.
+                    </p>
+                </section>
+
+                <section id="section3">
+                    <h2>3. 순천개인회생 수임 비용과 전문성 비교 가이드</h2>
+                    <p>
+                        채무자들이 사무소를 고를 때 가장 민감하게 반응하는 부분은 다름 아닌 수임 가격과 부대 비용입니다. 법조 시장 내 과당 경쟁이 유발되면서, 수임료 할인 경쟁이나 현금지원, 사은품 증정, 심지어 모바일 백화점 상품권이나 각종 지원금을 내걸고 영업하는 질 낮은 불법 대행업체들이 난무하고 있습니다.
+                    </p>
+                    <p>
+                        그러나 지나치게 수임 단가가 낮은 싼곳이나 최저가 저렴한곳만을 고집하다가는 되려 더 큰 낭패를 볼 수 있습니다. 회생 절차를 정상 진행하기 위해서는 채무액과 채권자 명부를 확인하고 부채증명서를 일일이 발급받아 첨부해야 하는데, 이 과정에서 발생하는 법원 인지대 및 송달료 등의 공과금이 만만치 않기 때문입니다.
+                    </p>
+                    <p>
+                        정직하고 유능한 전문 법률 대리인은 대개 난이도와 채권자 수에 맞춰 합리적인 비용 견적을 산출하여 분납 혜택을 다이렉트로 연계해 줍니다. 2026년 시장 평균 가격대를 비교해 보면 다음과 같은 구조적 차이점을 발견할 수 있습니다.
+                    </p>
+
+                    <h4>개인회생 대리인 채널별 비용 및 서비스 비교</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>비교 항목</th>
+                                <th>초저가 보장 업체 (비전문 브로커 개입 의심)</th>
+                                <th>지역 밀착 전문 변호사 및 법무사</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>평균 수임료 견적</td>
+                                <td>80만 원 - 120만 원 (숨겨진 추가 비용 빈번)</td>
+                                <td>150만 원 - 250만 원 (공과금 포함 투명 공개)</td>
+                            </tr>
+                            <tr>
+                                <td>서류 접수 및 보정 처리</td>
+                                <td>기계적인 표준 양식 복사, 맞춤형 변제율 설계 없음</td>
+                                <td>개별 채무 소명 자료 집중 작성, 보정 권고 신속 대응</td>
+                            </tr>
+                            <tr>
+                                <td>기각 시 환불 약정</td>
+                                <td>환불 거부 및 대행 법인 폐업 후 잠적 위험 상존</td>
+                                <td>수임 계약서상 기각 시 전액 환불 명시 및 구제책 가동</td>
+                            </tr>
+                            <tr>
+                                <td>의사소통 채널</td>
+                                <td>전화 연락 두절 잦음, 단순 아르바이트 직원 상담</td>
+                                <td>전담 사무장과 법률 대리인이 직접 대면 및 비대면 코칭</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>
+                        이 때문에 똑똑한 신청인들은 대리인을 결정할 때 여러 종류의 인터넷 사이트를 두루 거치며 법조 브랜드 순위를 조사하기도 하고, 다양한 오프라인 자문 컨설팅을 직접 받아보며 가입 의사를 최종 결정합니다.
+                    </p>
+                </section>
+
+                <!-- Calculator Section (Highly interactive to increase dwell time) -->
+                <section id="calculator">
+                    <h2>4. 순천개인회생 변제금 자가 진단 계산기</h2>
+                    <p>
+                        개인회생의 가장 핵심적인 계산 구조는 월평균 실소득에서 가구원수별 최저생계비를 제한 나머지 소득인 가용소득을 전액 법원에 납부하도록 설계하는 것입니다. 2026년도 공표 기준 중위소득 60%를 기초로 한 최저생계비를 차감한 뒤, 본인이 실제로 매월 납부해야 할 예상 변제 금액을 직접 계산해볼 수 있습니다. 아래의 계산기를 통해 직접 데이터를 입력해 보십시오.
+                    </p>
+
+                    <div class="interactive-calculator">
+                        <div class="calculator-grid">
+                            <div class="input-item">
+                                <label for="monthly-income">월평균 실수령 소득 (원 단위)</label>
+                                <input type="number" id="monthly-income" placeholder="예: 2500000" value="2500000">
+                            </div>
+                            <div class="input-item">
+                                <label for="household-size">부양 가구원수 (본인 포함)</label>
+                                <select id="household-size">
+                                    <option value="1">1인 가구 (최저생계비 약 1,330,000원)</option>
+                                    <option value="2">2인 가구 (최저생계비 약 2,200,000원)</option>
+                                    <option value="3">3인 가구 (최저생계비 약 2,820,000원)</option>
+                                    <option value="4">4인 가구 (최저생계비 약 3,430,000원)</option>
+                                </select>
+                            </div>
+                            <div class="input-item">
+                                <label for="total-debt">총 채무 누적액 (원 단위)</label>
+                                <input type="number" id="total-debt" placeholder="예: 50000000" value="50000000">
+                            </div>
+                            <div class="input-item">
+                                <label for="repay-months">변제 기간 (개월)</label>
+                                <select id="repay-months">
+                                    <option value="36">36개월 (표준)</option>
+                                    <option value="60">60개월 (최장)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="calc-btn" onclick="runSimulation()">상세 시뮬레이션 결과 도출하기</button>
+
+                        <div class="calc-result" id="simulation-output">
+                            <h4>시뮬레이션 분석 결과</h4>
+                            <p id="res-living-cost">가구원수 기준 인정 최저생계비: 원</p>
+                            <p id="res-monthly-repay">산출된 월 가용소득(월 납부 예정액): 원</p>
+                            <p id="res-total-repay">총 변제 예정 금액 (변제 기간 누적): 원</p>
+                            <p id="res-discharge-rate" style="font-weight: bold; color: var(--secondary-color);">원금 대비 예상 탕감율: %</p>
+                            <p style="font-size: 0.85em; color: var(--text-muted); margin-top: 15px;">
+                                본 시뮬레이션은 입력하신 정보 위주의 가상 수치 계산이며, 법원의 자산 평가(청산가치 보장의 원칙 적용) 및 실제 부양가족의 범위 축소 조율 여부에 따라 실제 월 변제액은 변동될 수 있습니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <script>
+                        function runSimulation() {
+                            const income = parseFloat(document.getElementById('monthly-income').value);
+                            const size = parseInt(document.getElementById('household-size').value);
+                            const debt = parseFloat(document.getElementById('total-debt').value);
+                            const months = parseInt(document.getElementById('repay-months').value);
+
+                            if (isNaN(income) || isNaN(debt) || income <= 0 || debt <= 0) {
+                                alert("올바른 수치를 모두 입력해 주세요.");
+                                return;
+                            }
+
+                            // Approximate 2026 minimum living cost values (60% of median income)
+                            let livingCost = 0;
+                            if (size === 1) livingCost = 1330000;
+                            else if (size === 2) livingCost = 2200000;
+                            else if (size === 3) livingCost = 2820000;
+                            else if (size === 4) livingCost = 3430000;
+
+                            let monthlyRepay = income - livingCost;
+                            if (monthlyRepay < 0) {
+                                monthlyRepay = 0;
+                            }
+
+                            const totalRepay = monthlyRepay * months;
+                            let dischargeRate = 0;
+                            if (totalRepay < debt) {
+                                dischargeRate = ((debt - totalRepay) / debt) * 100;
+                            } else {
+                                dischargeRate = 0;
+                            }
+
+                            document.getElementById('res-living-cost').innerHTML = "가구원수 기준 인정 최저생계비: " + livingCost.toLocaleString() + " 원";
+                            
+                            if (monthlyRepay <= 0) {
+                                document.getElementById('res-monthly-repay').innerHTML = "산출된 월 가용소득: 소득보다 생계비가 많아 현재로서는 불가능하거나 가구원 조정을 하셔야 합니다.";
+                                document.getElementById('res-total-repay').innerHTML = "총 변제 예정 금액: 0 원";
+                                document.getElementById('res-discharge-rate').innerHTML = "회생 가능성 경고: 추가 소득 소명 필요";
+                            } else {
+                                document.getElementById('res-monthly-repay').innerHTML = "산출된 월 가용소득(월 납부 예정액): " + Math.round(monthlyRepay).toLocaleString() + " 원";
+                                document.getElementById('res-total-repay').innerHTML = "총 변제 예정 금액 (변제 기간 누적): " + Math.round(totalRepay).toLocaleString() + " 원";
+                                document.getElementById('res-discharge-rate').innerHTML = "원금 대비 예상 탕감율: " + dischargeRate.toFixed(1) + "%";
+                            }
+
+                            document.getElementById('simulation-output').style.display = 'block';
+
+                            // Update CSS Chart
+                            document.getElementById('bar-before-val').style.height = '100%';
+                            const targetHeight = (totalRepay / debt) * 100;
+                            document.getElementById('bar-after-val').style.height = (targetHeight > 100 ? 100 : (targetHeight < 5 ? 5 : targetHeight)) + '%';
+                        }
+                    </script>
+
+                    <h4>개인회생 신청 전후의 금융 부채 부담 시각적 변화</h4>
+                    <div class="chart-container">
+                        <div class="chart-bar-wrap">
+                            <div class="chart-bar-bg">
+                                <div class="chart-bar-fill bar-red" id="bar-before-val" style="height: 100%;"></div>
+                            </div>
+                            <div class="chart-label">신청 전 (이자+원금 압박)</div>
+                        </div>
+                        <div class="chart-bar-wrap">
+                            <div class="chart-bar-bg">
+                                <div class="chart-bar-fill bar-blue" id="bar-after-val" style="height: 40%;"></div>
+                            </div>
+                            <div class="chart-label">신청 후 (조정된 원금 분납)</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section4">
+                    <h2>5. 개인회생 제도의 장단점과 주요 기각 사유 분석</h2>
+                    <p>
+                        회생 절차를 성공리에 마무리하기 위해서는 본 제도가 내포한 장단점을 균형 있고 정확하게 이해해야 합니다. 법인 파산이나 개인 파산 등 타 채무 조정 프로그램과 어떠한 차이가 있는지도 명확히 집고 넘어가야 올바른 자산 재건이 가능합니다.
+                    </p>
+                    
+                    <h4>회생 제도가 부여하는 명확한 이점 (장점)</h4>
+                    <p>
+                        가장 먼저 체감할 수 있는 혜택은 금지명령과 중지명령을 통한 채권 추심 행위의 전면적인 차단입니다. 매일 독촉 전화와 직장으로 날아오는 압류 예고 통지서에 고통받던 채무자들에게는 단비와도 같습니다. 또한 사채나 사금융 대출금은 물론이고 은행 대출, 보증 채무, 통신 연체 대금, 신용카드 대금 등 거의 모든 성격의 신용 채무 조정을 통합해 주기 때문에 정리하기 편리합니다. 아울러 공무원이나 교사, 전문 의료진, 법인 임원 등 직급 자격을 잃지 않고 일을 유지하면서 상환할 수 있는 유일무이한 제도적 이점이 있습니다.
+                    </p>
+                    
+                    <h4>우려되는 구조적 페널티 (단점)</h4>
+                    <p>
+                        인가가 떨어지면 은행 연합회에 특수기록코드가 등재되어 정상적인 신용 거래 활동이 3년에서 5년간 극도로 제한을 받게 됩니다. 즉, 시중은행 신용카드 발급이 거절되거나 정상 금리의 주택담보대출 실행이 불가해져서 오로지 체크카드 사용에 의존해야 하는 지루한 기간을 인내해야 합니다. 매월 법원 계좌로 납입하는 소정의 변제금이 단 한 달이라도 연체되면 직권 기각이나 폐지 결정의 위험에 곧바로 노출되는 등 강박적인 압박감도 뒤따릅니다.
+                    </p>
+
+                    <div class="alert-box">
+                        <p>
+                            경고 사항: 법원의 보정 권고 기한을 준수하지 않거나 재산 목록의 은닉 사실이 조사 과정에서 드러날 경우, 사건은 가차 없이 폐지 기각 결정을 받습니다. 특히 법원에서 요구하는 급여 명세 및 수입 가치를 허위 작성하거나 누락했을 때의 실무적 타격은 구제받기 어려울 정도로 강력하므로 솔직한 신청서 작성이 가장 요구됩니다.
+                        </p>
+                    </div>
+                </section>
+
+                <section id="section5">
+                    <h2>6. 2026년 광주지방법원 최신 판례 경향과 심사 흐름</h2>
+                    <p>
+                        과거에는 가상자산 투기 손실금이나 해외 선물 거래로 인한 손실 채무를 재산 목록의 청산가치에 전액 반영하는 고사 상태의 지침을 유지했으나, 2026년에 들어서는 실무상 미세한 유연성이 발현되는 움직임이 포착되고 있습니다. 청년의 신속한 사회 복귀와 노동 시장 유입을 유도하기 위해 소득의 절대 평가 수준을 전향적으로 수용하는 판결례들이 관찰되는 실정입니다.
+                    </p>
+                    <p>
+                        그럼에도 여전히 투기성 사치 소비 내역의 비중이 70%를 상회하거나, 신규 가출 채무 채무자 비율이 압도적으로 많다면 법원의 반응은 극도로 냉담해집니다. 고소득 전문 직종이라 할지라도 대지 지분 가치나 순천시내 주요 아파트 소유 가액 등 본인 소유의 부동산이 있을 경우에는 청산가치 보장의 원칙에 따라 가용 자산을 전량 내놓아야 하므로 채무가 모두 면책 처리될 것이라는 막연한 환상은 절대 금물입니다.
+                    </p>
+                </section>
+
+                <section id="faq">
+                    <h2>7. 자주 묻는 질문 (FAQ)</h2>
+                    
+                    <h4>Q1. 개인 파산 제도와 어떤 점에서 가장 결정적인 차이점이 생기나요?</h4>
+                    <p>
+                        개인파산은 보유하고 있는 전 재산을 매각하여 채권자들에게 한 번에 배당하고 채무 전액을 즉시 면책받는 제도입니다. 반면 개인회생은 일정한 직업과 정기적 수입을 얻고 있는 소득자가 최저생계비를 제한 수입으로 최대 3년에서 5년간 분할 변제한 뒤 남은 부채를 탕감받는 제도로, 소득 유무와 지속성이 제도를 선택하는 절대적 분기점이 됩니다.
+                    </p>
+
+                    <h4>Q2. 법원에서 요청하는 채무 소명 과정에서 사금융이나 대부업체 빚도 전부 포함할 수 있나요?</h4>
+                    <p>
+                        네 그렇습니다. 개인회생 채무 범위에는 한계가 거의 없습니다. 일반 금융권 신용 대출은 물론, 대부업체, 저축은행, 일수나 사채, 보증을 서 준 채무 및 스마트폰 단말기 할부 연체료와 같은 통신 채무까지도 전부 조정을 받아 채무 조정 채권자 목록에 편입할 수 있습니다. 다만 담보가 설정되어 있는 아파트 주담대나 차량 할부금 등은 별제권으로 취급되어 원리금을 따로 정상 결제해 가야 자산 유지가 가능합니다.
+                    </p>
+
+                    <h4>Q3. 광주지방법원 본원까지 가지 않고 순천 내에서 직접 비대면으로 서류 처리를 완료할 수 있나요?</h4>
+                    <p>
+                        네 그렇습니다. 대한민국 법원의 전자소송 시스템이 고도로 전산화되어 있어, 신청인 본인이 직접 법원을 왕래할 필요가 없습니다. 순천 지역 전담 대리인을 선임해 전자 위임 절차를 밟으면 모든 문서 접수와 송달, 심지어 보정 명령 대응까지 온라인 망에서 신속히 완료됩니다. 신청인은 채무자 회생 절차 상의 마지막 관문인 채권자 집회 기일에만 광주지방법원에 직접 방문하시면 됩니다.
+                    </p>
+
+                    <h4>Q4. 일용직 근무나 불규칙한 프리랜서 배달 업무를 수행하고 있어도 신청을 승인받을 수 있나요?</h4>
+                    <p>
+                        승인받을 수 있습니다. 소득세 신고가 진행되지 않는 단순 일용 임금 근로자나 아르바이트생, 프리랜서, 개인 배달 라이더의 경우에도 최근 1년간의 입금 통장 거래 내용 및 고용주의 임금 지급 확인서를 구체적으로 첨부하여 계속적 소득이 존재함을 적극 논리화하면 적격 판정을 받고 무사히 자격을 얻을 수 있습니다.
+                    </p>
+
+                    <h4>Q5. 남편이나 부인 몰래 혼자서 독립적으로 진행하고 싶습니다. 비밀 유지가 전적으로 보장되나요?</h4>
+                    <p>
+                        네 보장됩니다. 본 법률 제도는 전적으로 신청자 개인 한 사람의 신용 상태와 법률적 의사에 귀속되는 단독 사건입니다. 그러므로 대리인 위임 후 모든 사안의 통보 및 주요 우편물 송달 주소를 선임한 사무실의 전자 메일이나 팩스, 오피스 주소지로 단일 지정하게 되므로 동거 중인 가구원이나 직장 동료들이 알게 될 개연성은 실무상 매우 극소수입니다.
+                    </p>
+                </section>
+
+                <section id="external">
+                    <h2>🌐 공신력 있는 공식 법률 참조 채널</h2>
+                    <p>
+                        신청인은 허위 과장 광고 및 불건전한 상업적 정보에 맹목적으로 휘둘리기 전에, 정부 부처 및 공립 공익 법률기관의 신뢰성 높은 공식 웹사이트를 먼저 정독하여 관련 지식을 정확히 숙지하시기를 권해 드립니다.
+                    </p>
+                    <div class="link-section">
+                        <a href="https://recoveryxlawi.koreahankang.com" target="_blank" rel="noopener noreferrer">순천 법률 정보 지원 및 회생 자격 가이드 허브 (reliabledone.com)</a>
+                        <a href="https://www.scourt.go.kr" target="_blank" rel="noopener noreferrer">대한민국 대법원 법원 전자소송 및 관할 안내 포털</a>
+                        <a href="https://namu.wiki/w/%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D" target="_blank" rel="noopener noreferrer">나무위키 자동차보험 및 개인회생 법률용어 상세해설</a>
+                        <a href="https://www.gov.kr" target="_blank" rel="noopener noreferrer">정부24 통합 민원 문서 인터넷 발급 센터</a>
+                    </div>
+                </section>
+
+                <p style="margin-top: 50px; font-size: 0.9em; color: var(--text-muted); font-style: italic;">
+                    공지 사항: 본 안내 페이지에 수록된 제도적 해석 내용과 통계 기준은 전산 실무 보정 절차 및 2026년 기준 공표 중위 소득에 따른 가상의 법률 구조 모델입니다. 신청인 본인의 고유한 주택자산 처분 가치 반영 수준, 사채 비율 유무, 다중 과밀 채무 구조에 따라 수임 계약 비용과 월 실 상환 부담률은 판이하게 대조될 수 있습니다. 법적인 상환 의무를 조정하고자 할 시에는 반드시 자격을 갖춘 순천 전문 대리인과의 구체적 대면 상담을 우선하여 시행해 줄 것을 적극 당부 드립니다.
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+  
